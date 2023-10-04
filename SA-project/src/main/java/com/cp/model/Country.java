@@ -1,12 +1,5 @@
 package com.cp.model;
 
-<<<<<<< HEAD
-
-
-
-=======
-<<<<<<< HEAD
->>>>>>> d662063c077adb3ef29995a01e2e887ff3ef52a6
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -50,13 +43,4 @@ public class Country {
 	public void setCountryPublicationRankings(List<CountryPublicationRankings> countryPublicationRankings) {
 		this.countryPublicationRankings = countryPublicationRankings;
 	}
-<<<<<<< HEAD
 }
-=======
-	
-=======
-public class Country {
-
->>>>>>> a7ad9a645c00e4ce653e9f71d7fdee5f1640baaf
-}
->>>>>>> d662063c077adb3ef29995a01e2e887ff3ef52a6
