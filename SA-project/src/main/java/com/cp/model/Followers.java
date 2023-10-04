@@ -49,4 +49,5 @@ public class Followers {
 	public void setUsers_UserID(Users users_UserID) {
 		Users_UserID = users_UserID;
 	}
+	
 }

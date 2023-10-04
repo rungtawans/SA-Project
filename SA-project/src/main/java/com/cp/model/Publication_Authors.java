@@ -1,5 +1,48 @@
 package com.cp.model;
 
-public class Publication_Authors {
+import java.util.List;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@EntityScan
+@Table(name = "publication_authors")
+public class Publication_Authors {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name ="PublicationAuthorsId")
+	private String id;
+	
+	@JsonIgnore
+	@OneToMany(targetEntity=Authors.class, mappedBy="authors",
+    		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Authors> authors;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public List<Authors> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<Authors> authors) {
+		this.authors = authors;
+	}
+	
+	
 }
