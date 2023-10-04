@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import com.cp.demo.Product;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
