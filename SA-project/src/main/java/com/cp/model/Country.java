@@ -2,6 +2,7 @@ package com.cp.model;
 
 <<<<<<< HEAD
 public class Country {
+<<<<<<< HEAD
 
 =======
 import java.util.List;
@@ -49,4 +50,7 @@ public class Country {
 	}
 	
 >>>>>>> origin/master
+=======
+	
+>>>>>>> origin/master~
 }
