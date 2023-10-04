@@ -3,6 +3,11 @@ package com.cp.model;
 <<<<<<< HEAD
 public class Country {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	
+=======
+>>>>>>> 11bc09e8c73172410fa0fa00637af9d939d8d520
 
 =======
 import java.util.List;
@@ -50,7 +55,11 @@ public class Country {
 	}
 	
 >>>>>>> origin/master
+<<<<<<< HEAD
 =======
 	
 >>>>>>> origin/master~
+=======
+>>>>>>> 784bb87ec7c1bbc87fcd9842d559c9bdb5a1fd6a
+>>>>>>> 11bc09e8c73172410fa0fa00637af9d939d8d520
 }
