@@ -25,6 +25,10 @@ public class Quatile_SJR {
     @OneToOne
     @JoinColumn(name = "Year_YearId", referencedColumnName = "YearId")
     private Year year;
+    
+    @OneToOne
+    @JoinColumn(name = "Quatile_SJR_QuatileSJRId", referencedColumnName = "quatileSJRId")
+    private Quatile_SJR quatile_SJR;
 
 	public String getQuatileSJRId() {
 		return quatileSJRId;
@@ -66,7 +70,14 @@ public class Quatile_SJR {
 		this.year = year;
 	}
 
+	public Quatile_SJR getQuatile_SJR() {
+		return quatile_SJR;
+	}
+
+	public void setQuatile_SJR(Quatile_SJR quatile_SJR) {
+		this.quatile_SJR = quatile_SJR;
+	}
+
     
-    // สร้าง getter และ setter สำหรับคุณสมบัติอื่น ๆ ของ Entity
 }
 

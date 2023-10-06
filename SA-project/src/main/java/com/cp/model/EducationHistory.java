@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @EntityScan
@@ -24,6 +25,9 @@ public class EducationHistory {
 	
 	@Column(name ="DoctoralDegree")
 	private String doctoralDegree;
+	
+	@OneToOne(mappedBy = "educationhistory")
+    private Authors authors;
 
 	public String getId() {
 		return id;
@@ -55,6 +59,14 @@ public class EducationHistory {
 
 	public void setDoctoralDegree(String doctoralDegree) {
 		this.doctoralDegree = doctoralDegree;
+	}
+
+	public Authors getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(Authors authors) {
+		this.authors = authors;
 	}
 	
 }

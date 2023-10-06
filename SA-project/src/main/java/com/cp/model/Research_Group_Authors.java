@@ -30,15 +30,15 @@ public class Research_Group_Authors {
 	private String scopusAuthorID;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "GroupID", referencedColumnName = "id")
-	private Research_Group Research_Group_GroupID;
+	@JoinColumn(name = "Research_Group_GroupID", referencedColumnName = "GroupID")
+	private Research_Group research_Group;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "University_UniversityId", referencedColumnName = "id")
-	private Research_Group University_UniversityId;
+	@JoinColumn(name = "University_UniversityId", referencedColumnName = "UniversityId")
+	private University university;
 	
-	@JsonIgnore
-	@OneToMany(targetEntity=Authors.class, mappedBy="authors",
+//	@JsonIgnore
+	@OneToMany(targetEntity=Authors.class, mappedBy="research_group_authors",
     		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Authors> authors;
 
@@ -58,20 +58,20 @@ public class Research_Group_Authors {
 		this.scopusAuthorID = scopusAuthorID;
 	}
 
-	public Research_Group getResearch_Group_GroupID() {
-		return Research_Group_GroupID;
+	public Research_Group getResearch_Group() {
+		return research_Group;
 	}
 
-	public void setResearch_Group_GroupID(Research_Group research_Group_GroupID) {
-		Research_Group_GroupID = research_Group_GroupID;
+	public void setResearch_Group(Research_Group research_Group) {
+		this.research_Group = research_Group;
 	}
 
-	public Research_Group getUniversity_UniversityId() {
-		return University_UniversityId;
+	public University getUniversity() {
+		return university;
 	}
 
-	public void setUniversity_UniversityId(Research_Group university_UniversityId) {
-		University_UniversityId = university_UniversityId;
+	public void setUniversity(University university) {
+		this.university = university;
 	}
 
 	public List<Authors> getAuthors() {

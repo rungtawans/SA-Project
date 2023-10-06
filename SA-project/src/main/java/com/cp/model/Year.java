@@ -17,6 +17,27 @@ public class Year {
 	private String id;
 	
 	private String Year;
+	
+	@OneToOne(mappedBy = "year")
+    private CountryPublicationRankings countryPublicationRankings;
+	
+	@OneToOne(mappedBy = "year")
+	private UniversityRankings universityRankings;
+	
+	@OneToOne(mappedBy = "year")
+	private UniversityPublicationRankings universityPublicationRankings;
+	
+	@OneToOne(mappedBy = "year")
+	private FacultyPublicationRankings facultyPublicationRankings;
+	
+	@OneToOne(mappedBy = "year")
+	private Quatile_SJR qualitile_SJR;
+
+	@OneToOne(mappedBy = "year")
+	private PaperStatistics paperStatistics;
+	
+	@OneToOne(mappedBy = "year")
+	private PublicationRanking publicationRanking;
 
 	public String getId() {
 		return id;
@@ -33,8 +54,6 @@ public class Year {
 	public void setYear(String year) {
 		Year = year;
 	}
-	@OneToOne(mappedBy = "year")
-    private CountryPublicationRankings countryPublicationRankings;
 
 	public CountryPublicationRankings getCountryPublicationRankings() {
 		return countryPublicationRankings;
@@ -44,9 +63,6 @@ public class Year {
 		this.countryPublicationRankings = countryPublicationRankings;
 	};
 	
-	@OneToOne(mappedBy = "year")
-	private UniversityRankings universityRankings;
-
 	public UniversityRankings getUniversityRankings() {
 		return universityRankings;
 	}
@@ -55,9 +71,6 @@ public class Year {
 		this.universityRankings = universityRankings;
 	}
 	
-	@OneToOne(mappedBy = "year")
-	private UniversityPublicationRankings universityPublicationRankings;
-
 	public UniversityPublicationRankings getUniversityPublicationRankings() {
 		return universityPublicationRankings;
 	}
@@ -66,9 +79,6 @@ public class Year {
 		this.universityPublicationRankings = universityPublicationRankings;
 	}
 	
-	@OneToOne(mappedBy = "year")
-	private FacultyPublicationRankings facultyPublicationRankings;
-
 	public FacultyPublicationRankings getFacultyPublicationRankings() {
 		return facultyPublicationRankings;
 	}
@@ -76,4 +86,29 @@ public class Year {
 	public void setFacultyPublicationRankings(FacultyPublicationRankings facultyPublicationRankings) {
 		this.facultyPublicationRankings = facultyPublicationRankings;
 	}
+
+	public Quatile_SJR getQualitile_SJR() {
+		return qualitile_SJR;
+	}
+
+	public void setQualitile_SJR(Quatile_SJR qualitile_SJR) {
+		this.qualitile_SJR = qualitile_SJR;
+	}
+
+	public PaperStatistics getPaperStatistics() {
+		return paperStatistics;
+	}
+
+	public void setPaperStatistics(PaperStatistics paperStatistics) {
+		this.paperStatistics = paperStatistics;
+	}
+
+	public PublicationRanking getPublicationRanking() {
+		return publicationRanking;
+	}
+
+	public void setPublicationRanking(PublicationRanking publicationRanking) {
+		this.publicationRanking = publicationRanking;
+	}
+	
 }

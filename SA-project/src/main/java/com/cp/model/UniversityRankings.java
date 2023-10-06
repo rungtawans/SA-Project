@@ -1,3 +1,4 @@
+
 package com.cp.model;
 
 import jakarta.persistence.CascadeType;
@@ -17,20 +18,16 @@ public class UniversityRankings {
 	@Column(name="UniversityRankingsId")
 	private String id;
 	
-	@Column(name="Rank")
-	private int Rank;
+	@Column(name="Ranking")
+	private int rank;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "YearId", referencedColumnName = "id")
-	private Year Year_YearId;
-
-	public Year getYear_YearId() {
-		return Year_YearId;
-	}
-
-	public void setYear_YearId(Year year_YearId) {
-		Year_YearId = year_YearId;
-	}
+    @JoinColumn(name = "Year_YearId", referencedColumnName = "YearId")
+	private Year year;
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name="Univerity_UniversityId", referencedColumnName = "UniversityId")
+	private University university;
 
 	public String getId() {
 		return id;
@@ -41,22 +38,27 @@ public class UniversityRankings {
 	}
 
 	public int getRank() {
-		return Rank;
+		return rank;
 	}
 
 	public void setRank(int rank) {
-		Rank = rank;
+		this.rank = rank;
 	}
 
-	@ManyToOne(optional=false)
-	@JoinColumn(name="UniversityId")
-	private University University_UniversityId;
-
-	public University getUniversity_UniversityId() {
-		return University_UniversityId;
+	public Year getYear() {
+		return year;
 	}
 
-	public void setUniversity_UniversityId(University university_UniversityId) {
-		University_UniversityId = university_UniversityId;
+	public void setYear(Year year) {
+		this.year = year;
 	}
+
+	public University getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(University university) {
+		this.university = university;
+	}
+	
 }

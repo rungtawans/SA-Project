@@ -1,12 +1,17 @@
 package com.cp.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Faculty {
@@ -19,8 +24,16 @@ public class Faculty {
 	private String name;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="UniversityId")
-	private University University_UniversityId;
+	@JoinColumn(name="University_UniversityId", referencedColumnName = "UniversityId")
+	private University university;
+
+	@OneToMany(targetEntity=Field.class, mappedBy="faculty",
+	cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Field> field;
+	
+	@OneToMany(targetEntity=FacultyPublicationRankings.class, mappedBy="faculty",
+			cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<FacultyPublicationRankings> facultyPublicationRankings;
 
 	public String getId() {
 		return id;
@@ -38,11 +51,29 @@ public class Faculty {
 		this.name = name;
 	}
 
-	public University getUniversity_UniversityId() {
-		return University_UniversityId;
+	public University getUniversity() {
+		return university;
 	}
 
-	public void setUniversity_UniversityId(University university_UniversityId) {
-		University_UniversityId = university_UniversityId;
+	public void setUniversity(University university) {
+		this.university = university;
 	}
+
+	public List<Field> getField() {
+		return field;
+	}
+
+	public void setField(List<Field> field) {
+		this.field = field;
+	}
+
+	public List<FacultyPublicationRankings> getFacultyPublicationRankings() {
+		return facultyPublicationRankings;
+	}
+
+	public void setFacultyPublicationRankings(List<FacultyPublicationRankings> facultyPublicationRankings) {
+		this.facultyPublicationRankings = facultyPublicationRankings;
+	}
+
+	
 }

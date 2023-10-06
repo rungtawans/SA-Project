@@ -79,7 +79,7 @@ public class PaperStatistics {
 	}
 
 	public PaperStatistics(String statId, Integer numberOfViews, Integer numberOfCitations, Year year,
-			List<com.cp.model.Publication> publication) {
+			List<Publication> publication) {
 		super();
 		this.statId = statId;
 		this.numberOfViews = numberOfViews;

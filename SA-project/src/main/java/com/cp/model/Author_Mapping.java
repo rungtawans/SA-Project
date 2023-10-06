@@ -20,16 +20,12 @@ public class Author_Mapping {
 	private String id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "UserID", referencedColumnName = "id")
-	private Users Users_UserID;
-	
+	@JoinColumn(name = "Users_UserID", referencedColumnName = "UserID")
+	private Users users;
+
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Authors_Id", referencedColumnName = "id")
-	private Authors Authors_Authors_Id;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Authors_Publication_Authors_PublicationAuthorsId", referencedColumnName = "id")
-	private Authors Authors_Publication_Authors_PublicationAuthorsId;
+	@JoinColumn(name = "Authors_Authors_Id", referencedColumnName = "Authors_Id")
+	private Authors authors;
 
 	public String getId() {
 		return id;
@@ -39,30 +35,20 @@ public class Author_Mapping {
 		this.id = id;
 	}
 
-	public Users getUsers_UserID() {
-		return Users_UserID;
+	public Users getUsers() {
+		return users;
 	}
 
-	public void setUsers_UserID(Users users_UserID) {
-		Users_UserID = users_UserID;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
-	public Authors getAuthors_Authors_Id() {
-		return Authors_Authors_Id;
+	public Authors getAuthors() {
+		return authors;
 	}
 
-	public void setAuthors_Authors_Id(Authors authors_Authors_Id) {
-		Authors_Authors_Id = authors_Authors_Id;
+	public void setAuthors(Authors authors) {
+		this.authors = authors;
 	}
-
-	public Authors getAuthors_Publication_Authors_PublicationAuthorsId() {
-		return Authors_Publication_Authors_PublicationAuthorsId;
-	}
-
-	public void setAuthors_Publication_Authors_PublicationAuthorsId(
-			Authors authors_Publication_Authors_PublicationAuthorsId) {
-		Authors_Publication_Authors_PublicationAuthorsId = authors_Publication_Authors_PublicationAuthorsId;
-	}
-	
 	
 }

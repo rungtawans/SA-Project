@@ -25,9 +25,9 @@ public class Bookmarks {
 	
 	//@JsonIgnore 
 	@ManyToOne(optional=false)
-	@JoinColumn(name = "UserID", referencedColumnName = "id")
-	private Users Users_UserID;
-
+	@JoinColumn(name = "Users_UserID", referencedColumnName = "UserID")
+	private Users users;
+	
 	public String getId() {
 		return id;
 	}
@@ -44,13 +44,13 @@ public class Bookmarks {
 		this.bookmarkDate = bookmarkDate;
 	}
 
-	public Users getUsers_UserID() {
-		return Users_UserID;
+	public Users getUsers() {
+		return users;
 	}
 
-	public void setUsers_UserID(Users users_UserID) {
-		Users_UserID = users_UserID;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
-	
+
 	
 }

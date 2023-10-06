@@ -17,12 +17,16 @@ public class CountryPublicationRankings {
 	@Column(name="CountryPublicationRankingsId")
 	private String id;
 	
-	@Column(name="Rank")
+	@Column(name="Ranking")
 	private int rank;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="CountryId")
-	private Country Country_CountryId;
+	@JoinColumn(name="Country_CountryId", referencedColumnName = "CountryId")
+	private Country country;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Year_YearId", referencedColumnName = "YearId")
+	private Year Year_YearId;
 
 	public Year getYear_YearId() {
 		return Year_YearId;
@@ -48,18 +52,12 @@ public class CountryPublicationRankings {
 		this.rank = rank;
 	}
 
-	
-	public Country getCountry_CountryId() {
-		return Country_CountryId;
+	public Country getCountry() {
+		return country;
 	}
 
-	public void setCountry_CountryId(Country country_CountryId) {
-		Country_CountryId = country_CountryId;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
-
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "YearId", referencedColumnName = "id")
-	private Year Year_YearId;
-	
 }

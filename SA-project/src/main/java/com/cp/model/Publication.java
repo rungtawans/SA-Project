@@ -1,9 +1,8 @@
 package com.cp.model;
 
-import java.time.Year;
+//import java.time.Year;
 import java.util.List;
 import java.util.Set;
-
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -13,7 +12,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -24,58 +22,64 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Publication")
 public class Publication {
-    @Id
-    @Column(name = "PaperID")
-    private String paperID;
+	@Id
+	@Column(name = "PaperID")
+	private String paperID;
 
-    @Column(name = "Title")
-    private String title;
+	@Column(name = "Title")
+	private String title;
 
-    @Column(name = "Abstract")
-    private String abstractText;
+	@Column(name = "Abstract")
+	private String abstractText;
 
-    @Column(name = "PublishYear")
-    private Integer publishYear;
+	@Column(name = "PublishYear")
+	private Integer publishYear;
 
-    @Column(name = "ISSN")
-    private String issn;
+	@Column(name = "ISSN")
+	private String issn;
 
-    @Column(name = "ISBN")
-    private String isbn;
+	@Column(name = "ISBN")
+	private String isbn;
 
-    @Column(name = "DOI")
-    private String doi;
+	@Column(name = "DOI")
+	private String doi;
 
-    @Column(name = "ORCID")
-    private String orcid;
+	@Column(name = "ORCID")
+	private String orcid;
 
-    @Column(name = "University")
-    private String university;
+	@Column(name = "University")
+	private String university;
 
-    @Column(name = "Publisher")
-    private String publisher;
+	@Column(name = "Publisher")
+	private String publisher;
 
-    @JsonIgnore
-    @OneToMany(targetEntity=Publication_Area.class, mappedBy="Publication_Area",
-    		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Publication_Area> Publication_Area;
-   
-    @OneToOne(cascade = CascadeType.ALL)
- 	@JoinColumn(name = "Quatile_SJR",referencedColumnName = "id")
-	private Quatile_SJR Quatile_SJR;
-    
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "PaperStatistics_StatID", referencedColumnName = "StatID")
-    private PaperStatistics PaperStatistics;
-    
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "PublicationrRanking_PublicationrRankingId", referencedColumnName = "PublicationrRankingId")
-    private PublicationrRanking PublicationrRanking;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Quatile_SJR", referencedColumnName = "QuatileSJRId")
+	private Quatile_SJR quatile_SJR;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "FacultyPublicationRankings_FacultyPublicationRankings_Id", referencedColumnName = "FacultyPublicationRankings_Id")
+	private PublicationRanking facultyPublicationRankings;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "PaperStatistics_StatID", referencedColumnName = "StatID")
+	private PaperStatistics paperStatistics;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "PublicationrRanking_PublicationrRankingId", referencedColumnName = "PublicationrRankingId")
+	private PublicationRanking publicationRanking;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Publication_Authors_PublicationAuthorsId", referencedColumnName = "PublicationAuthorsId")
+	private Publication_Authors publication_AuthorsPublication_Authors;
+
+//  @JsonIgnore
+	@OneToMany(targetEntity = Publication_Area.class, mappedBy = "Publication_Area", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Publication_Area> publication_Area;
 
 	public Publication(String paperID, String title, String abstractText, Integer publishYear, String issn, String isbn,
-			String doi, String orcid, String university, String publisher,
-			List<com.cp.model.Publication_Area> publication_Area, com.cp.model.Quatile_SJR quatile_SJR,
-			com.cp.model.PaperStatistics paperStatistics, com.cp.model.PublicationrRanking publicationrRanking) {
+			String doi, String orcid, String university, String publisher, List<Publication_Area> publication_Area,
+			Quatile_SJR quatile_SJR, PaperStatistics paperStatistics, PublicationRanking publicationRanking) {
 		super();
 		this.paperID = paperID;
 		this.title = title;
@@ -87,10 +91,10 @@ public class Publication {
 		this.orcid = orcid;
 		this.university = university;
 		this.publisher = publisher;
-		Publication_Area = publication_Area;
-		Quatile_SJR = quatile_SJR;
-		PaperStatistics = paperStatistics;
-		PublicationrRanking = publicationrRanking;
+		this.publication_Area = publication_Area;
+		this.quatile_SJR = quatile_SJR;
+		this.paperStatistics = paperStatistics;
+		this.publicationRanking = publicationRanking;
 	}
 
 	public String getPaperID() {
@@ -174,34 +178,51 @@ public class Publication {
 	}
 
 	public List<Publication_Area> getPublication_Area() {
-		return Publication_Area;
+		return publication_Area;
 	}
 
 	public void setPublication_Area(List<Publication_Area> publication_Area) {
-		Publication_Area = publication_Area;
+		this.publication_Area = publication_Area;
 	}
 
 	public Quatile_SJR getQuatile_SJR() {
-		return Quatile_SJR;
+		return quatile_SJR;
 	}
 
 	public void setQuatile_SJR(Quatile_SJR quatile_SJR) {
-		Quatile_SJR = quatile_SJR;
+		this.quatile_SJR = quatile_SJR;
 	}
 
 	public PaperStatistics getPaperStatistics() {
-		return PaperStatistics;
+		return paperStatistics;
 	}
 
 	public void setPaperStatistics(PaperStatistics paperStatistics) {
-		PaperStatistics = paperStatistics;
+		this.paperStatistics = paperStatistics;
 	}
 
-	public PublicationrRanking getPublicationrRanking() {
-		return PublicationrRanking;
+	public PublicationRanking getPublicationRanking() {
+		return publicationRanking;
 	}
 
-	public void setPublicationrRanking(PublicationrRanking publicationrRanking) {
-		PublicationrRanking = publicationrRanking;
+	public void setPublicationRanking(PublicationRanking publicationRanking) {
+		this.publicationRanking = publicationRanking;
 	}
+
+	public PublicationRanking getFacultyPublicationRankings() {
+		return facultyPublicationRankings;
+	}
+
+	public void setFacultyPublicationRankings(PublicationRanking facultyPublicationRankings) {
+		this.facultyPublicationRankings = facultyPublicationRankings;
+	}
+
+	public Publication_Authors getPublication_AuthorsPublication_Authors() {
+		return publication_AuthorsPublication_Authors;
+	}
+
+	public void setPublication_AuthorsPublication_Authors(Publication_Authors publication_AuthorsPublication_Authors) {
+		this.publication_AuthorsPublication_Authors = publication_AuthorsPublication_Authors;
+	}
+
 }

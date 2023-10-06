@@ -22,8 +22,8 @@ public class Field {
 	private String desc;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="FacultyId")
-	private Faculty Faculty_FacultyId;
+	@JoinColumn(name="Faculty_FacultyId", referencedColumnName = "FacultyId")
+	private Faculty faculty;
 
 	public String getId() {
 		return id;
@@ -49,11 +49,12 @@ public class Field {
 		this.desc = desc;
 	}
 
-	public Faculty getFaculty_FacultyId() {
-		return Faculty_FacultyId;
+	public Faculty getFaculty() {
+		return faculty;
 	}
 
-	public void setFaculty_FacultyId(Faculty faculty_FacultyId) {
-		Faculty_FacultyId = faculty_FacultyId;
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
 	}
+
 }

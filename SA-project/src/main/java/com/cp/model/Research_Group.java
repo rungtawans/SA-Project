@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Research_Group {
@@ -19,8 +20,11 @@ public class Research_Group {
 	private String name;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="UniversityId")
-	private University University_UniversityId;
+	@JoinColumn(name="University_UniversityId", referencedColumnName = "UniversityId")
+	private University university;
+	
+	@OneToOne(mappedBy = "Research_Group")
+    private Research_Group_Authors research_Group_Authors;
 
 	public String getId() {
 		return id;
@@ -38,11 +42,22 @@ public class Research_Group {
 		this.name = name;
 	}
 
-	public University getUniversity_UniversityId() {
-		return University_UniversityId;
+	public University getUniversity() {
+		return university;
 	}
 
-	public void setUniversity_UniversityId(University university_UniversityId) {
-		University_UniversityId = university_UniversityId;
+	public void setUniversity(University university) {
+		this.university = university;
 	}
+
+	public Research_Group_Authors getResearch_Group_Authors() {
+		return research_Group_Authors;
+	}
+
+	public void setResearch_Group_Authors(Research_Group_Authors research_Group_Authors) {
+		this.research_Group_Authors = research_Group_Authors;
+	}
+	
+	
+	
 }

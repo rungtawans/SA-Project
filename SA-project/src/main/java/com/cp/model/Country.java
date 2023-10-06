@@ -19,8 +19,19 @@ public class Country {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CountryId")
 	private String id;
+	
 	@Column(name="CountryName")
 	private String name;
+	
+//	@JsonIgnore
+	@OneToMany(targetEntity=CountryPublicationRankings.class, mappedBy="country",
+    		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<CountryPublicationRankings> countryPublicationRankings;
+	
+	@OneToMany(targetEntity=University.class, mappedBy="country",
+    		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<University> university; 
+
 	public String getId() {
 		return id;
 	}
@@ -33,14 +44,20 @@ public class Country {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@JsonIgnore
-	@OneToMany(targetEntity=CountryPublicationRankings.class, mappedBy="country",
-    		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<CountryPublicationRankings> countryPublicationRankings;
+
 	public List<CountryPublicationRankings> getCountryPublicationRankings() {
 		return countryPublicationRankings;
 	}
+	
 	public void setCountryPublicationRankings(List<CountryPublicationRankings> countryPublicationRankings) {
 		this.countryPublicationRankings = countryPublicationRankings;
 	}
+	
+	public List<University> getUniversity() {
+		return university;
+	}
+	public void setUniversity(List<University> university) {
+		this.university = university;
+	}
+	
 }

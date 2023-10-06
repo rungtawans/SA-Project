@@ -37,8 +37,5 @@ public class The_Research_Area {
 		The_Research_Area_Name = the_Research_Area_Name;
 	}
 
-    
-    // สร้าง getter และ setter สำหรับคุณสมบัติอื่น ๆ ของ Entity
 
-    // สร้าง constructor และ method อื่น ๆ ตามความเหมาะสม
 }
