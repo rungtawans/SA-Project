@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Publication</title>
+</head>
+<body>
+    <h1>List of Publications</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <!-- เพิ่มคอลัมน์อื่น ๆ ตามที่คุณมีในตาราง Publication -->
+        </tr>
+        <tr th:each="publication : ${publications}">
+            <td><a th:href="@{/publication-detail/{paperId}(paperId=${publication.paperID})}" th:text="${publication.title}"></a></td>
+            <!-- เพิ่มคอลัมน์อื่น ๆ ตามที่คุณมีในตาราง Publication -->
+        </tr>
+    </table>
+</body>
+</html>
